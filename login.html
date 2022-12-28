@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en" and dir="Itr">
+<head>
+	<meta charset="UTF-8">
+	<title>Interactive Login Form</title>
+	<link rel="stylesheet" href="style.css">
+    <script type="text/javascript" src="login.js"></script>
+    
+</head>
+<body>
+    <div class="flexbox-container">
+    <form class="box" action="login.html" method="POST">
+        <div class="flexbox-item-1">
+        <h1>login</h1>
+        <input class="boxStyle" type="text" name="username" placeholder="Enter Username" id="username">
+        
+        <input  type="password" placeholder="Enter password" id="password" name="password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters" required onfocus="myFunction1()" onblur="myFunction2()" onkeyup="myFunction3()" ><br>
+        <input type="checkbox" onclick="myFunction()">Show Password
+        <input type="submit" name="" value="Login" onclick="validate()">
+        </div>
+        <div id="message" class="flexbox-item-2">
+            <h3>Password must contain the following:</h3>
+            <p id="letter" class="invalid">A <b>lowercase</b> letter</p>
+            <p id="capital" class="invalid">A <b>capital (uppercase)</b> letter</p>
+            <p id="number" class="invalid">A <b>number</b></p>
+            <p id="lengths" class="invalid">Minimum <b>8 characters</b></p>
+        </div>
+        
+    </form>
+    </div>
+<script>
+      var myInput = document.getElementById("password");
+      
+      function myFunction3()
+       {
+         var lowerCaseLetters = /[a-z]/g;
+        if(myInput.value.match(lowerCaseLetters)) {  
+             document.getElementById('letter')
+                    .className = "valid";
+         } 
+        else {
+               document.getElementById('letter')
+                    .className = "invalid";
+         }
+
+// Validate capital letters
+        var upperCaseLetters = /[A-Z]/g;
+        if(myInput.value.match(upperCaseLetters)) {  
+               document.getElementById('capital')
+                    .className = "valid";
+        }
+        else {
+              document.getElementById('capital')
+                    .className = "invalid";
+            }
+
+// Validate numbers
+       var numbers = /[0-9]/g;
+       if(myInput.value.match(numbers)) {  
+              document.getElementById('number')
+                    .className = "valid";
+       }
+      else {
+              document.getElementById('number')
+                    .className = "invalid";
+        }
+
+// Validate length
+      if(myInput.value.length >= 8) {
+          lengths.classList.remove("invalid");
+          lengths.classList.add("valid");
+       } 
+       else {
+          lengths.classList.remove("valid");
+          lengths.classList.add("invalid");
+        }
+       }
+</script>
+</body>
+</html>
